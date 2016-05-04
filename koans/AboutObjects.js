@@ -86,22 +86,7 @@ describe("About Objects", function () {
   });
 
 
-  it("should use prototype to add to all objects", function () {
-      function Circle(radius)
-      {
-        this.radius = radius;
-      }
-
-      var simpleCircle = new Circle(10);
-      var colouredCircle = new Circle(5);
-      colouredCircle.colour = "red";
-
-      expect(simpleCircle.colour).toBe(undefined);
-      expect(colouredCircle.colour).toBe('red');
-
-      Circle.prototype.describe = function () {
-        return "This circle has a radius of: " + this.radius;
-      };
+      
 
       expect(simpleCircle.describe()).toBe('This circle has a radius of: 10');
       expect(colouredCircle.describe()).toBe('This circle has a radius of: 5');
