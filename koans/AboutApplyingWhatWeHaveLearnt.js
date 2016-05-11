@@ -26,28 +26,37 @@ describe("About Applying What We Have Learnt", function() {
             for (j = 0; j < products[i].ingredients.length; j+=1) {
                if (products[i].ingredients[j] === "mushrooms") {
                   hasMushrooms = true;
+
                }
             }
             if (!hasMushrooms) productsICanEat.push(products[i]);
         }
     }
 
-    expect(productsICanEat.length).toBe(2);
+    expect(productsICanEat.length).toBe(1);
   });
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
 
-      var productsICanEat = [];
-
-      /* solve using filter() & all() / any() */
+      // var productsICanEat = [];
+      //
       // _.filter(products, function(pizza){
-      //   _.any(pizza.ingredients, function(toppings){
-      //     if(toppings === "mushrooms"){
-      //       mushPizza.push(pizza.name);
-      //     }
-      //   });
+      // 	if(pizza.containsNuts === false){
+      // 		hasMushrooms = false;
+      // 	}
+      // 	_.any(pizza.ingredients, function(toppings){
+      // 		if(toppings === 'mushrooms'){
+      // 			hasMushrooms = true;
+      // 		}
+      // 	})
+      // 	if(!hasMushrooms){
+      // 		productsICanEat.push(pizza.name);
+      // 	}
       // });
-      expect(productsICanEat.length).toBe(2);
+      //
+      // console.log(productsICanEat);
+      //
+      expect(productsICanEat.length).toBe(1);
   });
 
   /*********************************************************************************/
@@ -90,7 +99,7 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   it("should count the ingredient occurrence (functional)", function () {
@@ -98,12 +107,13 @@ describe("About Applying What We Have Learnt", function() {
 
     /* chain() together map(), flatten() and reduce() */
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
+
+
   it("should find the largest prime factor of a composite number", function () {
 
   });
@@ -124,5 +134,5 @@ describe("About Applying What We Have Learnt", function() {
   it("should find the 10001st prime", function () {
 
   });
-  */
+
 });
