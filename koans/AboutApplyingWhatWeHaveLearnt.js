@@ -38,24 +38,23 @@ describe("About Applying What We Have Learnt", function() {
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
 
-      // var productsICanEat = [];
-      //
-      // _.filter(products, function(pizza){
-      // 	if(pizza.containsNuts === false){
-      // 		hasMushrooms = false;
-      // 	}
-      // 	_.any(pizza.ingredients, function(toppings){
-      // 		if(toppings === 'mushrooms'){
-      // 			hasMushrooms = true;
-      // 		}
-      // 	})
-      // 	if(!hasMushrooms){
-      // 		productsICanEat.push(pizza.name);
-      // 	}
-      // });
-      //
-      // console.log(productsICanEat);
-      //
+       var productsICanEat = [];
+
+      _.filter(products, function(pizza){
+      	if(pizza.containsNuts === false){
+      		hasMushrooms = false;
+      	}
+      	_.any(pizza.ingredients, function(toppings){
+      		if(toppings === 'mushrooms'){
+      			hasMushrooms = true;
+      		}
+      	})
+      	if(!hasMushrooms){
+      		productsICanEat.push(pizza.name);
+      	}
+      });
+
+
       expect(productsICanEat.length).toBe(1);
   });
 
@@ -86,13 +85,13 @@ describe("About Applying What We Have Learnt", function() {
     // console.log(_.reduce(div, function(a,b){return a+b}));
 
 // improved answer
-    // var answer = _.chain(_.range(1000))
-    //   .filter(function(x){return x % 3 === 0 || x % 5 === 0})
-    // 	.reduce(function(a,b){return a + b})
-    // 	.value()
-    // 
-    // console.log('reducing answer: ' + answer);
-    //
+    var answer = _(_.range(1000)).chain()
+      .filter(function(x){return x % 3 === 0 || x % 5 === 0})
+    	.reduce(function(a,b){return a + b})
+    	.value()
+
+    console.log('reducing answer: ' + answer);
+
 
     var sum = 233168;    /* try chaining range() and reduce() */
 
@@ -116,6 +115,18 @@ describe("About Applying What We Have Learnt", function() {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
+
+
+    var answer = _(products).chain()
+      .map(function(pizza){return pizza.ingredients})
+    	.flatten()
+    	.reduce(function(ingredientCount, topping){
+    		ingredientCount[topping] = (ingredientCount[topping] || 0) + 1;
+    		return ingredientCount;}, {})
+    	.value();
+
+    ingredientCount = answer;
+
 
     expect(ingredientCount['mushrooms']).toBe(2);
   });
