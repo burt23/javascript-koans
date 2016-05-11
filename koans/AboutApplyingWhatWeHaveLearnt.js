@@ -84,6 +84,16 @@ describe("About Applying What We Have Learnt", function() {
     //   }
     // });
     // console.log(_.reduce(div, function(a,b){return a+b}));
+
+// improved answer
+    // var answer = _.chain(_.range(1000))
+    //   .filter(function(x){return x % 3 === 0 || x % 5 === 0})
+    // 	.reduce(function(a,b){return a + b})
+    // 	.value()
+    // 
+    // console.log('reducing answer: ' + answer);
+    //
+
     var sum = 233168;    /* try chaining range() and reduce() */
 
     expect(233168).toBe(233168);
